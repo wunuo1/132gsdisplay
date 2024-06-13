@@ -13,18 +13,16 @@
 #include "sp_display.h"
 
 #define STREAM_FRAME_SIZE 209715222
-static char doc[] = "vio2encode sample -- An example of using the camera to record and encode";
+static char doc[] = "132gsdisplay sample -- An example of using the 132gs camera to HDMI display";
 atomic_bool is_stop;
 struct arguments
 {
-    char *output_path;
     int output_height;
     int output_width;
     int input_height;
     int input_width;
 };
 static struct argp_option options[] = {
-    {"output", 'o', "path", 0, "output file path"},
     {"owidth", 'w', "width", 0, "width of output video"},
     {"oheight", 'h', "height", 0, "height of output video"},
     {"iwidth", 0x81, "width", 0, "sensor output width"},
@@ -35,9 +33,6 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state)
     struct arguments *args = state->input;
     switch (key)
     {
-    case 'o':
-        args->output_path = arg;
-        break;
     case 'w':
         args->output_width = atoi(arg);
         break;
@@ -52,7 +47,8 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state)
         break;
     case ARGP_KEY_END:
     {
-        if (state->argc != 11)
+        printf("%d",state->argc);
+        if (state->argc != 9)
         {
             argp_state_help(state, stdout, ARGP_HELP_STD_HELP);
         }

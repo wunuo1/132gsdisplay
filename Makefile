@@ -1,4 +1,4 @@
-TARGET = vio2encoder
+TARGET = 132gsdisplay
 
 SRC_PATH := $(CURDIR)
 
